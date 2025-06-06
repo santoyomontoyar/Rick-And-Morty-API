@@ -12,7 +12,7 @@ console.log(json)
     title.innerText = json.name
     characterImage.setAttribute("src", json.image)
         const card = `       
-        <div class="character character--info">
+        <div class="info character--info">
                 <h2>genero: ${json.gender}</h2>
                 <h3>status: ${json.status}</h3>
                 <h4>ubicacion: ${json.location.name}</h4>
