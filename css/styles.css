@@ -33,6 +33,10 @@ nav {
   right: 20px;
 }
 
+nav a ul {
+  display: flex;
+}
+
 nav a {
   margin-left: 20px;
   text-decoration: none;
@@ -58,15 +62,20 @@ nav a {
   overflow: hidden;
 }
 
+.hero1 img {
+ border-radius: 50%;
+ border: 5px solid #3c3c3c;
+}
+
 .hero img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 313px;
-  height: 326px;
   opacity: 0.5;
   z-index: 1;
+  border-radius: 50%;
 }
 
 .hero h1 {
@@ -78,7 +87,15 @@ nav a {
   z-index: 2;
 }
 
-.container {
+.hero h2 {
+  color: white;
+  position: relative;
+  top: 200px;
+  font-size: 48px;
+  text-align: center;
+}
+
+.container-uno {
     margin-top: 128px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -127,4 +144,41 @@ nav a {
 .character a:hover {
   background-color: white;
   color: black;
+}
+
+.character {
+  text-align: center;
+}
+
+.info {
+  color: rgb(255, 255, 255);
+  background-color: #222;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  padding: 9px 0 9px;
+  font-size: 1.4rem;
+  flex-direction: column;
+  gap: 15px;
+  display: flex;
+  width: 35%;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.info a {
+  text-decoration: none;
+  background-color: rgb(118, 100, 100);
+  width: 110px;
+  margin: 0 200px;
+  padding: 0 10px 10px;
+  text-align: center;
+  transition: all 0.5s ease;
+  color: white;
+  border-radius: 5px;
+}
+
+.info a:hover {
+  background: rgb(118, 142, 125);
+  color: white;
 }

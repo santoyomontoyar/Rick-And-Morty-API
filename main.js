@@ -4,7 +4,7 @@ fetch("https://rickandmortyapi.com/api/character")
 .then(response => response.json())
 .then(json => {
     console.log(json)
-    const container = document.querySelector(".container")
+    const container = document.querySelector(".container-uno")
     let containerData = ""
     json.results.forEach(character => {
         const card = `
