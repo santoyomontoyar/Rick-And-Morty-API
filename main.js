@@ -1,42 +1,55 @@
-const paramsString = window.location.search;
-const searchParams = new URLSearchParams(paramsString);
+const searchParams = new URLSearchParams(window.location.search);
+const page = searchParams.get("page") || 1;
+const name = searchParams.get("name") || "";
 
-const pageUrl = searchParams.get("page");
-
-let paramsPagination = "";
-if (pageUrl !== 1 || pageUrl !== null) {
-    paramsPagination = `?page=${pageUrl}`;
+let apiUrl = `https://rickandmortyapi.com/api/character/?page=${page}`;
+if (name) {
+  apiUrl += `&name=${name}`;
 }
 
-
-fetch("https://rickandmortyapi.com/api/character" + paramsPagination)
-.then(response => response.json())
-.then(json => {
-    console.log(json)
-    const container = document.querySelector(".container-uno")
-    
-    const pagination = document.querySelector("#pagination")
-    
-    let pages = ""
-    for (let pageIndex = 1; pageIndex <= json.info.pages; pageIndex++) {
-        const page = `<a href="?page=${pageIndex}">${pageIndex}</a>`      
-        pages += page
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Personaje no encontrado");
     }
-    pagination.innerHTML = pages
+    return response.json();
+  })
+  .then(json => {
+    const containeruno = document.querySelector(".container-uno");
+    const pagination = document.getElementById("pagination");
 
-    let containerData = ""
+    let containerunoData = "";
     json.results.forEach(character => {
-        const card = `
+      const card = `
         <div class="character">
-            <img src="${character.image}" alt="${character.name}">
-            <div class="character_content">
-                <h2>${character.name}</h2>
-                <p>${character.species}</p>
-                <a href="character.html?id=${character.id}">Ir al personaje</a>
-            </div>
-        </div>
-        `
-        containerData += card
-    })
-    container.innerHTML = containerData
-})
+          <img src="${character.image}" alt="${character.name}">
+          <div class="character_content">
+            <h2>${character.name}</h2>
+            <p>${character.species}</p>
+            <a href="character.html?id=${character.id}">Ir al personaje</a>
+          </div>
+        </div>`;
+      containerunoData += card;
+    });
+    containeruno.innerHTML = containerunoData;
+
+    let pages = "";
+    for (let i = 1; i <= json.info.pages; i++) {
+      let link = `?page=${i}`;
+      if (name) link += `&name=${name}`;
+      pages += `<a href="${link}">${i}</a>`;
+    }
+    pagination.innerHTML = pages;
+  })
+  .catch(error => {
+    document.querySelector(".container-uno").innerHTML = "<p>No se encontraron personajes.</p>";
+    document.getElementById("pagination").innerHTML = "";
+  });
+
+const botonBuscar = document.getElementById("buscador");
+if (botonBuscar) {
+  botonBuscar.addEventListener("click", () => {
+    const input = document.getElementById("name-filter").value.trim();
+    window.location.href = `?name=${input}`;
+  });
+}
