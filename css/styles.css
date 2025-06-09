@@ -210,3 +210,21 @@ nav a {
     background: rgb(93, 143, 122);
     color: white;
 }
+
+.buscar {
+    position: absolute;
+    top: 7px;
+    margin: 10px;
+    left: 71px;
+}
+
+.buscar input {
+    border-radius: 100px;
+    margin: auto;
+    padding: 0 0 0 12px;
+}
+
+.buscar button {
+    border-radius: 20px;
+    padding: 0 5px 0 5px;
+}
