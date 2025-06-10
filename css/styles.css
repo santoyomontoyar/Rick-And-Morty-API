@@ -228,3 +228,64 @@ nav a {
     border-radius: 20px;
     padding: 0 5px 0 5px;
 }
+
+.footer{
+  position: absolute;
+  width: 93.3%;
+  background: #222;
+  text-align: center;
+  align-items: flex-end;
+  min-height: 150px;
+  padding: 20px 50px;
+    margin-top: 40px;
+}
+
+.social-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 10px 5px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.icon-elem{
+  list-style: none;
+}
+
+.icon{
+  color: white;
+  font-size: 32px;
+  display: inline-block;
+  margin: 0 10px;
+  transition: 0.5s;
+}
+
+.icon:hover{
+  transform: translateY(-10px);
+}
+
+.menu{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.menu-icon{
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px 10px;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.menu-icon:hover{
+  opacity: 1;
+}
